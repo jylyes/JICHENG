@@ -454,9 +454,29 @@
 
         /* ========== 行业/报价 (Industries / Quote) ========== */
         .industry-quote-section {
-            background: #1a2531;
+            /* 替换图片路径 */
+            background-image: url('img/背景.png'); 
+            background-size: cover;      /* 让图片铺满整个区域 */
+            background-position: center; /* 图片居中显示 */
+            background-repeat: no-repeat;
             color: white;
             padding: 60px 0 70px;
+            position: relative;          /* 为了让遮罩层能定位 */
+        }
+        
+        /* 添加半透明遮罩，保证文字清晰可读 */
+        .industry-quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26, 37, 49, 0.7); /* 0.7 是透明度，数字越小越透明 */
+            z-index: 0; /* 放在最底层，但在背景图之上 */
+        }
+        
+        /* 确保文字和表单在遮罩层上面 */
+        .industry-quote-grid {
+            position: relative;
+            z-index: 1;
         }
 
         .industry-quote-grid {
