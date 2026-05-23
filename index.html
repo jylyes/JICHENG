@@ -633,8 +633,21 @@
 
         /* ========== 响应式微调 ========== */
         @media (max-width: 992px) {
-            .nav-links { display: none; } /* 移动端隐藏简化展示 */
-            .hero-features { grid-template-columns: repeat(2,1fr); }
+    /* 1. 把隐藏改为显示，并设置flex换行和居中 */
+    .nav-links {
+        display: flex !important; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        margin-top: 15px; 
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* 2. 调小手机端导航链接的字体，防止换行太难看 */
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
             .process-steps { flex-wrap: wrap; }
             .step-card { flex-basis: 45%; margin-bottom: 20px; }
             .step-connector { display: none; }
