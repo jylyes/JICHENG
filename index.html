@@ -631,41 +631,139 @@
             padding-top: 10px;
         }
 
-        /* ========== 响应式微调 ========== */
+               /* ========== 响应式微调 ========== */
+        /* 通用平板与手机规则 (宽度小于 992px) */
         @media (max-width: 992px) {
-    /* 1. 把隐藏改为显示，并设置flex换行和居中 */
-    .nav-links {
-        display: flex !important; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        margin-top: 15px; 
-        gap: 8px;
-        width: 100%;
-    }
+            /* 1. 修复导航栏：强制显示并居中 */
+            .nav-links {
+                display: flex !important;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                margin-top: 15px;
+            }
+            .nav-links a {
+                font-size: 14px;
+            }
+            
+            .header-inner {
+                justify-content: center;
+            }
 
-    /* 2. 调小手机端导航链接的字体，防止换行太难看 */
-    .nav-links a {
-        font-size: 13px;
-        padding: 5px 10px;
-    }
-            .process-steps { flex-wrap: wrap; }
-            .step-card { flex-basis: 45%; margin-bottom: 20px; }
-            .step-connector { display: none; }
-            .about-grid { grid-template-columns: 1fr; }
-            .capabilities-grid { grid-template-columns: repeat(3, 1fr); }
-            .industry-quote-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            /* 2. 解决方案流程步骤调整 */
+            .process-steps {
+                flex-wrap: wrap;
+            }
+            .step-card {
+                flex-basis: 45%;
+                margin-bottom: 20px;
+            }
+            .step-connector {
+                display: none;
+            }
+
+            /* 3. 关于我们、核心能力、行业页等变单列/双列 */
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .capabilities-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .industry-quote-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        @media (max-width: 576px) {
-            .hero-features { grid-template-columns: 1fr; }
-            .step-card { flex-basis: 100%; }
-            .about-stats { grid-template-columns: 1fr 1fr; }
-            .capabilities-grid { grid-template-columns: 1fr 1fr; }
-            .icons-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .quote-row { grid-template-columns: 1fr; }
+        /* 手机规则 (宽度小于 768px) */
+        @media (max-width: 768px) {
+            /* 关键修复：核心能力强制变为 2 列 */
+            .capabilities-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            .step-card {
+                flex-basis: 100%;
+            }
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .icons-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .quote-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero-features {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .feature-item {
+                align-items: center;
+            }
         }
+		/* ===== 手机端强制适配补丁 (请添加在 style 最后) ===== */
+		@media screen and (max-width: 768px) {
+		    /* 防止任何元素横向撑开屏幕 */
+		    * {
+		        box-sizing: border-box;
+		    }
+		    .container {
+		        padding-left: 15px;
+		        padding-right: 15px;
+		        width: 100%;
+		    }
+		    /* 所有图片自适应 */
+		    img, .step-card-img, .cap-card-img, .about-img {
+		        max-width: 100% !important;
+		        height: auto !important;
+		        background-size: cover;
+		    }
+		    /* 确保导航栏在小屏上能正常换行显示 */
+		    .header-inner {
+		        flex-wrap: wrap;
+		        justify-content: center;
+		    }
+		    .nav-links {
+		        display: flex;
+		        flex-wrap: wrap;
+		        justify-content: center;
+		        margin-top: 10px;
+		        gap: 8px;
+		    }
+		    .nav-links a {
+		        font-size: 13px;
+		        padding: 6px 10px;
+		    }
+		    /* 流程步骤强制一列显示（原代码是flex wrap，加一个优先级更高的1列） */
+		    .process-steps {
+		        flex-direction: column;
+		        align-items: center;
+		    }
+		    .step-card {
+		        width: 100%;
+		        max-width: 100%;
+		        margin-bottom: 20px;
+		    }
+		    .step-connector {
+		        display: none; /* 手机端隐藏连接箭头 */
+		    }
 		    /* 关于我们 - 堆叠显示 */
 		    .about-grid {
 		        grid-template-columns: 1fr;
@@ -707,6 +805,37 @@
 		    .feature-item {
 		        align-items: center;
 		    }
+		}
+		/* ========== 强制修复手机端图片压缩变形 ========== */
+		@media (max-width: 768px) {
+		    /* 1. 修复解决方案流程中的图片容器 */
+		    .step-card-img {
+		        height: auto !important;       /* 高度自适应 */
+		        aspect-ratio: 16 / 9 !important; /* 固定宽高比 */
+		        background-size: cover !important;
+		        background-position: center !important;
+		    }
+		
+		    /* 2. 修复核心能力中的图片容器 */
+		    .cap-card-img {
+		        height: 160px !important;       /* 给一个固定高度，保证图片展示 */
+		        background-size: cover !important;
+		        background-position: center !important;
+		    }
+		
+		    /* 3. 修复关于我们中的大图 */
+		    .about-img {
+		        height: 250px !important;       /* 手机端降低高度，避免过满 */
+		        background-size: cover !important;
+		        background-position: center !important;
+		    }
+		}
+		
+		/* 4. 额外保证：通用图片不溢出且保持比例 */
+		img {
+		    max-width: 100%;
+		    height: auto;
+		    object-fit: cover;   /* 关键：防止图片被拉伸变形 */
 		}
     </style>
 </head>
