@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JICHENG - 一站式塑料制造解决方案</title>
+    <!-- FontAwesome 国内镜像 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts 国内镜像 -->
+    <link href="https://fonts.googleapis.cn/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== 基础重置 ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: #ffffff; color: #1e1e1e; line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* ========== 顶部导航栏 ========== */
+        header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e5e7eb; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo-area { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 700; color: #2156a9; }
+        .logo-icon { width: 30px; height: 30px; background: #2156a9; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
+        .logo-text { color: #2156a9; }
+        .logo-text span { color: #1e2b3f; }
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: #333; }
+        .nav-links a:hover { color: #2156a9; }
+        .btn-header { background: #2156a9; color: white !important; padding: 10px 24px; border-radius: 4px; font-size: 14px; font-weight: 600; }
+        
+        /* ========== 关于我们 Hero ========== */
+        .about-hero {
+            position: relative;
+            background: linear-gradient(to right, #0f1724 0%, #0f1724 10%, rgba(15, 23, 36, 0) 100%), 
+                        url('img/第-1-轮-·-结果-1.png') no-repeat center center / cover;
+            color: white;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px 0;
+        }
+        
+        .about-hero .container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            max-width: 100% !important;
+        }
+        
+        .about-hero-content {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 45%;
+            text-align: left;
+            z-index: 2;
+        }
+        
+        .about-hero-content h1 { font-size: 48px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
+        .about-hero-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .about-hero-content p { color: #d1d5db; font-size: 15px; line-height: 1.8; max-width: 600px; }
+        
+        .about-hero-image { 
+            margin-left: auto; 
+            display: block; 
+            width: 50%; 
+            height: 350px; 
+        }
+        .about-hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        
+        /* ========== 核心详情网格 ========== */
+        .about-details { padding: 60px 0; background: #f8fafc; }
+        .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .detail-card { background: white; border-radius: 8px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: 0.3s; }
+        .detail-card:hover { transform: translateY(-5px); }
+        .detail-number { display: inline-block; width: 40px; height: 40px; background: #2156a9; color: white; border-radius: 50%; text-align: center; line-height: 40px; font-weight: 700; font-size: 14px; margin-bottom: 15px; }
+        .detail-img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 15px; background-color: #e2e8f0; }
+        .detail-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .detail-card h4 span { font-weight: 400; font-size: 14px; color: #666; margin-left: 8px; }
+        .detail-card p { color: #4b5563; font-size: 14px; line-height: 1.6; }
+        .detail-highlight-number { font-size: 28px; font-weight: 800; color: #2156a9; display: block; margin-bottom: 5px; }
+
+        /* ========== 底部统计栏 ========== */
+        .stats-banner { background-color: #1a335f; padding: 40px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; align-items: center; }
+        .stat-item { display: flex; align-items: center; justify-content: center; gap: 15px; color: white; border-right: 1px solid rgba(255,255,255,0.1); }
+        .stat-item:last-child { border-right: none; }
+        .stat-icon { font-size: 30px; color: #a3c2e8; }
+        .stat-text h3 { font-size: 24px; font-weight: 700; }
+        .stat-text span { font-size: 14px; opacity: 0.8; }
+
+        /* ========== 页脚 ========== */
+        footer { background: #121a24; color: #ccd6e0; padding: 50px 0 20px; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr 1.5fr; gap: 30px; border-bottom: 1px solid #2a3742; padding-bottom: 40px; margin-bottom: 20px; }
+        .footer-col h4 { color: white; font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+        .footer-col p { color: #9ca3af; line-height: 1.8; }
+        .footer-col ul li a { color: #9ca3af; transition: 0.3s; }
+        .footer-col ul li a:hover { color: white; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.05); border-radius: 50%; color: #9ca3af; transition: 0.3s; }
+        .social-links a:hover { background: #2156a9; color: white; }
+        .copyright { text-align: center; color: #6b7280; font-size: 13px; padding-top: 10px; }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 992px) {
+            .about-hero-wrapper { flex-direction: column; text-align: center; }
+            .details-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; margin-top: 15px; }
+        }
+        @media (max-width: 768px) {
+            .details-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+        .nav-links a i {
+            font-size: 12px;
+            color: #999;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">JC</div>
+                <div class="logo-text">JI<span>CHENG</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about us.html" class="active">About Us</a>
+                <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Capabilities <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Industries <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Case Studies</a>
+                <a href="#">News</a>
+                <a href="#">Contact Us</a>
+                <a href="#" class="btn-header">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <h1>ABOUT US</h1>
+                <h3>ONE-STOP PLASTIC MANUFACTURING SOLUTION</h3>
+                <p>We are a professional plastic manufacturing factory integrating product design, raw material supply, mold development, injection molding, secondary processing, assembly and other comprehensive services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6个卡片详情 -->
+    <section class="about-details">
+        <div class="container">
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-number">01</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Company Introduction">
+                    <h4>Company Introduction <span>Company Introduction</span></h4>
+                    <p>Focus on plastic product design and manufacturing, providing one-stop solutions from concept to finished product.</p>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-number">02</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Factory Area">
+                    <h4>Factory Area <span>Factory Area</span></h4>
+                    <span class="detail-highlight-number">20,000+m²</span>
+                    <p>Modern production base with standardized workshops and advanced facilities.</p>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-number">03</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Engineering Team">
+                    <h4>Engineering Team <span>Engineering Team</span></h4>
+                    <p>Experienced engineering team with strong R&D and project management capabilities.</p>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-number">04</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Equipment Display">
+                    <h4>Equipment Display <span>Equipment Display</span></h4>
+                    <p>Equipped with advanced production and inspection equipment to ensure high quality and efficiency.</p>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-number">05</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Quality Management">
+                    <h4>Quality Management <span>Quality Management</span></h4>
+                    <p>Strict quality control system from raw materials to finished products to ensure reliable quality.</p>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-number">06</div>
+                    <img class="detail-img" src="img/第-1-轮-·-结果-1.png" alt="Global Cooperation">
+                    <h4>Global Cooperation <span>Global Cooperation</span></h4>
+                    <p>Products exported to more than 50 countries and regions worldwide, establishing long-term and stable partnerships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部统计栏 -->
+    <div class="stats-banner">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
+                    <div class="stat-text"><h3>10+</h3><span>Years of Experience</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="stat-text"><h3>100+</h3><span>Skilled Employees</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    <div class="stat-text"><h3>20,000+m²</h3><span>Factory Area</span></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-globe-asia"></i></div>
+                    <div class="stat-text"><h3>50+</h3><span>Cooperative Countries</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                        <div style="width:30px; height:30px; background:#2156a9; clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">JC</div>
+                        <div style="color:white; font-weight:bold; font-size:20px;">JICHENG</div>
+                    </div>
+                    <p>We are dedicated to providing high-quality plastic products and services to customers worldwide.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>QUICK LINKS</h4>
+                    <ul><li><a href="#">Home</a></li><li><a href="#">About Us</a></li><li><a href="#">Services</a></li><li><a href="#">Capabilities</a></li><li><a href="#">Case Studies</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>SERVICES</h4>
+                    <ul><li><a href="#">Product Design</a></li><li><a href="https://www.dgzhonger.com/">Raw Materials</a></li><li><a href="#">Mold Development</a></li><li><a href="#">Injection Molding</a></li><li><a href="#">Quality Control</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>CONTACT US</h4>
+                    <ul><li><i class="fas fa-phone-alt"></i> +86 123 4567 8901</li><li><i class="fas fa-envelope"></i> info@jicheng.com</li><li><i class="fas fa-map-marker-alt"></i> DongGuan, China</li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>FOLLOW US</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">© 2026 JICHENG. All Rights Reserved.</div>
+        </div>
+    </footer>
+    <a href="https://wa.me/85257096596" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="联系WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            background-color: #20b858;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        @media (max-width: 576px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 26px;
+            }
+        }
+    </style>
+</body>
+</html>
