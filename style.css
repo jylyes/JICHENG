@@ -104,12 +104,6 @@ header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e
 .about-img { background: #e2e8f0; height: 320px; background-image: url('img/工厂图.png'); background-size: cover; background-position: center; border-radius: 8px; }
 .btn-dark-blue { background: #2156a9; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; font-size: 15px; border: none; cursor: pointer; display: inline-block; }
 
-/* ====================================
-   style.css (精简版)
-   保留所有生效的布局与效果
-   ==================================== */
-
-/* ... （之前的代码保持不变，直到下面这部分） ... */
 
 /* ========== 行业/报价 ========== */
 .industry-quote-section {
@@ -136,16 +130,16 @@ header { background-color: #ffffff; padding: 15px 0; border-bottom: 1px solid #e
     display: flex;
     justify-content: space-between; /* 让四张图片均匀分布 */
     gap: 12px;                      /* 图片之间的间距 */
-    margin-top: 20px;               /* 与上方标题隔开一点距离 */
+    margin-top: 20px;               
 }
 
 .industry-img-container .img-box {
     flex: 1;                        /* 四张图片平分宽度 */
-    aspect-ratio: 3 / 4;            /* ★ 关键：强制图片为3:4的竖图比例 */
+    aspect-ratio: 3 / 4;           
     border-radius: 8px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.05); /* 背景占位，防止图片未加载时空白 */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* 精致边框 */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
 }
 
 .industry-img-container .img-box img {
@@ -289,13 +283,12 @@ img { max-width: 100%; height: auto; }
 	        gap: 20px !important;
 	    }
 	}
-    /* 强制修复手机端图片压缩变形 */
     .step-card-img { height: auto !important; aspect-ratio: 16/9 !important; background-size: cover !important; background-position: center !important; }
     .cap-card-img { height: 160px !important; background-size: cover !important; background-position: center !important; }
     .about-img { height: 250px !important; background-size: cover !important; background-position: center !important; }
 }
 
-/* ========== 行业应用 (Industries) - 最终生效版 ========== */
+/* ========== 行业应用 (Industries) ========= */
 .industries-section {
     padding: 20px 0 40px;
     background: #f8fafc;
@@ -372,14 +365,14 @@ img { max-width: 100%; height: auto; }
     margin: 0;
     color: #1e1e1e;
     line-height: 1.2;
-    white-space: nowrap;  /* ★ 关键：强制中文/英文标题不换行 */
+    white-space: nowrap; 
 }
 
 .card-title-group .en-title {
     font-size: 9px;
     text-transform: uppercase;
     color: #6b7280;
-    white-space: nowrap;  /* ★ 关键：强制副标题不换行 */
+    white-space: nowrap; 
 }
 
 /* --- 右侧：大图区域 --- */
@@ -485,9 +478,8 @@ img { max-width: 100%; height: auto; }
 .partner-logo img:hover {
     transform: scale(1.05);
 }
-/* ======================== 🚀 终极修复 - 强制执行 ======================== */
 
-/* 1. 强制所有主体区块占满全屏 */
+
 .process-section,
 .about-section,
 .industries-section,
@@ -543,7 +535,7 @@ footer .container {
     grid-template-columns: 1.3fr 1fr !important;  /* 左侧从 1fr 改为 1.3fr */
     gap: 40px !important;
 }
-/* 6. 保留原有 1200px 限制但只针对顶部导航和hero内容（不破坏页面其他部分） */
+
 header .container,
 .hero .container {
     max-width: 1200px !important;   /* 仅头部保持原样，不影响下方 */
